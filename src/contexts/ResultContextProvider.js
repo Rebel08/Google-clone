@@ -6,7 +6,7 @@ const baseUrl = 'https://google-search3.p.rapidapi.com/api/v1';
 export const ResultContextProvider = ({ children }) => {
     const [results, setResults] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [searchTerm, setSearchTerm] = useState('naruto');
+    const [searchTerm, setSearchTerm] = useState();
 
     // /videos,/search, /images
     const getResults = async (type) => {
@@ -16,15 +16,15 @@ export const ResultContextProvider = ({ children }) => {
             method: 'GET',
             headers: {
                 'x-user-agent': 'desktop',
-                'x-proxy-location': 'EU',
+                // 'x-proxy-location': 'IN',
                 'x-rapidapi-host': 'google-search3.p.rapidapi.com',
-                'x-rapidapi-key': '3f0962ce6dmshdc09a31e8df653bp15b0dbjsnf50c4275ad15'
+                'x-rapidapi-key': process.env.REACT_APP_API_KEY,
             }
         });
         const data = await response.json();
 
         if(type.includes('/news')){
-            console.log(data.entries);
+            // console.log(data.entries);
             setResults(data.entries);
         }
         else if(type.includes('/images')){
