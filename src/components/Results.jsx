@@ -89,8 +89,8 @@ export const Results = () => {
         <div className="flex flex-wrap justify-around items-center ">
           {results.map((video, index) => (
             <div className="p-2" key={index}>
-              {video?.additional_links?.[0]?.href && <ReactPlayer url={video.additional_links?.[0].href} controls width="355px" height="200px" />
-              } </div>
+              {video?.additional_links?.[0]?.href && <ReactPlayer url={video.additional_links?.[0].href} controls width="355px" height="200px" />} 
+              </div>
           ))}
         </div>
       );
